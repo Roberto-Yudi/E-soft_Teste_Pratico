@@ -4,3 +4,4 @@ def HomePageView(request):
 
     return render(request, 'accounts/home.html')
 
+
