@@ -12,7 +12,35 @@
           </nav>
         <div class='container'>
         {% block content %}
-        <h2>Tattaglia Household</h2>
+            <h2>Tattaglia Household</h2>
+
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Idade</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Nascimento</th>
+                    <th scope="col">Apelido</th>
+                    <th scope="col">Observação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ user.first_name|add:user.last_name }}</td>
+                        <td>{{ user.idade }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.nascimento }}</td>
+                        <td>{% if user.apelido %}{{ user.apelido }}{% else %}sem apelido{% endif %}</td>
+                        <td>{% if user.observação %}{{ user.observação }}{% else %}nenhuma{% endif %}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table> <br>
+              <a class="btn btn-primary" href="{% url 'signup' %}">Cadastrar</a>
         {% endblock %}
         </div>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
